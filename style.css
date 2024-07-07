@@ -1,0 +1,211 @@
+:root {
+  --moderate-violet: hsl(263, 55%, 52%);
+  --very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --very-dark-blackish-blue: hsl(219, 29%, 14%);
+  --white: hsl(0, 0%, 100%);
+
+  --light-gray: hsl(0, 0%, 81%);
+  --light-grayish-blue: hsl(210, 46%, 95%);
+
+  --font-size-XS: 0.812rem;
+  --font-size-S: 0.875rem;
+  --font-size-M: 1rem;
+  --font-size-L: 1.2rem;
+  --font-family-barlow: "Barlow Semi Condensed", sans-serif;
+
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+}
+
+/* ======================== Reset ======================== */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  /* line-height: 1.5; */
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* ======================== Custom CSS ======================== */
+
+body {
+  background-color: var(--light-grayish-blue);
+  /* color: white; */
+  font-family: var(--font-family-barlow);
+  font-size: var(--font-size-XS);
+  font-weight: var(--font-weight-500);
+
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 1220px;
+  margin: 4rem auto;
+}
+
+.testimonials {
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "card-A"
+    "card-B"
+    "card-C"
+    "card-D"
+    "card-E";
+}
+
+@media (min-width: 750px) {
+  .testimonials {
+    grid-template-areas:
+      "card-A card-D"
+      "card-B card-E"
+      "card-C card-E";
+
+    /* grid-template-areas:
+      "card-A card-B"
+      "card-A card-C"
+      "card-D card-E"
+      "card-D card-E"; */
+  }
+}
+
+@media (min-width: 1252px) {
+  .testimonials {
+    grid-template-columns: repeat(4, minmax(250px, auto));
+    grid-template-areas:
+      "card-A card-A card-B card-E"
+      "card-C card-D card-D card-E";
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+  }
+}
+
+/* card */
+.card {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+
+  /* display: grid; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-A {
+  position: relative;
+  grid-area: card-A;
+  background-color: var(--moderate-violet);
+}
+.card-B {
+  grid-area: card-B;
+  background-color: var(--very-dark-grayish-blue);
+}
+.card-C {
+  grid-area: card-C;
+}
+.card-D {
+  grid-area: card-D;
+  background-color: var(--very-dark-blackish-blue);
+}
+.card-E {
+  grid-area: card-E;
+}
+
+.card-A,
+.card-B,
+.card-D {
+  color: var(--light-grayish-blue);
+}
+
+.card-A .author,
+.card-A .statement,
+.card-B .author,
+.card-B .statement,
+.card-D .author,
+.card-D .statement {
+  color: var(--light-gray);
+}
+
+.card-C,
+.card-E {
+  color: var(--very-dark-grayish-blue);
+}
+
+.card-A::before {
+  content: url("/images/bg-pattern-quotation.svg");
+  position: absolute;
+  right: 5.5rem;
+  right: 17%;
+  top: 0;
+}
+
+@media (max-width: 800px) {
+  .card-A::before {
+    right: 10%;
+  }
+}
+
+.author {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.author-img {
+  border: 2px solid;
+  border-color: var(--light-grayish-blue);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.card-A .author-img,
+.card-B .author-img {
+  border-color: var(--light-gray);
+}
+
+.card-D .author-img {
+  border-color: var(--moderate-violet);
+}
+
+.author-name {
+  font-weight: var(--font-weight-600);
+}
+
+.author-title {
+  opacity: 50%;
+}
+
+.summary {
+  z-index: 1;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-L);
+}
+
+.statement {
+  opacity: 70%;
+}
